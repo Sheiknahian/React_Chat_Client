@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Rahim Ahmed",
+    "username": "rahim",
+    "avatar": "https://i.pravatar.cc/150?img=1",
+    "lastMessage": "Hey, how are you?",
+    "time": "10:25 AM",
+    "online": true
+  },
+  {
+    "id": 2,
+    "name": "Karim Hasan",
+    "username": "karim",
+    "avatar": "https://i.pravatar.cc/150?img=2",
+    "lastMessage": "Let's meet tomorrow.",
+    "time": "09:48 AM",
+    "online": false
+  },
+  {
+    "id": 3,
+    "name": "Tanvir Islam",
+    "username": "tanvir",
+    "avatar": "https://i.pravatar.cc/150?img=3",
+    "lastMessage": "I have sent the files.",
+    "time": "Yesterday",
+    "online": true
+  },
+  {
+    "id": 4,
+    "name": "Nusrat Jahan",
+    "username": "nusrat",
+    "avatar": "https://i.pravatar.cc/150?img=4",
+    "lastMessage": "Thanks for your help!",
+    "time": "Yesterday",
+    "online": false
+  },
+  {
+    "id": 5,
+    "name": "Sadia Akter",
+    "username": "sadia",
+    "avatar": "https://i.pravatar.cc/150?img=5",
+    "lastMessage": "See you soon 😊",
+    "time": "Monday",
+    "online": true
+  },
+  {
+    "id": 6,
+    "name": "Ayesha Rahman",
+    "username": "ayesha",
+    "avatar": "https://i.pravatar.cc/150?img=6",
+    "lastMessage": "Did you finish the project?",
+    "time": "11:42 AM",
+    "online": true
+  },
+  {
+    "id": 7,
+    "name": "Fahim Khan",
+    "username": "fahim",
+    "avatar": "https://i.pravatar.cc/150?img=7",
+    "lastMessage": "Call me when you're free.",
+    "time": "10:15 AM",
+    "online": false
+  },
+  {
+    "id": 8,
+    "name": "Mehedi Hasan",
+    "username": "mehedi",
+    "avatar": "https://i.pravatar.cc/150?img=8",
+    "lastMessage": "The meeting starts at 2 PM.",
+    "time": "Yesterday",
+    "online": true
+  },
+  {
+    "id": 9,
+    "name": "Sabrina Islam",
+    "username": "sabrina",
+    "avatar": "https://i.pravatar.cc/150?img=9",
+    "lastMessage": "Thanks 😊",
+    "time": "Yesterday",
+    "online": false
+  },
+  {
+    "id": 10,
+    "name": "Rakib Hossain",
+    "username": "rakib",
+    "avatar": "https://i.pravatar.cc/150?img=10",
+    "lastMessage": "See you tomorrow!",
+    "time": "Monday",
+    "online": true
+  }
+]

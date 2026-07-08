@@ -4,13 +4,21 @@ import AuthLayout from "../Layouts/AuthLayout";
 import Login from "../Components/Login";
 import Signup from "../Components/Signup";
 import PrivateRoute from "./PrivateRoute";
+import PublicLayout from "../Layouts/PublicLayout";
 
 
 
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <PrivateRoute><App></App></PrivateRoute>
+        element: <PublicLayout></PublicLayout>,
+        children: [
+            {
+                index: true,
+                path: '/',
+                element: <App></App>
+            }
+        ]
     },
     {
         path: '/',
