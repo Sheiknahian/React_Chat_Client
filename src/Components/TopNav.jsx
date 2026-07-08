@@ -4,7 +4,7 @@ import { FaPlus, FaSearch } from 'react-icons/fa';
 const TopNav = () => {
     const [members, setMembers] = useState([])
     useEffect(()=>{
-        fetch('/public/users.json').then(res=>res.json()).then(data=>setMembers(data))
+        fetch('/users.json').then(res=>res.json()).then(data=>setMembers(data))
     }, [])
     console.log(members);
     
