@@ -4,7 +4,7 @@ import { HiDotsHorizontal } from 'react-icons/hi';
 const Users = () => {
     const [members, setMembers] = useState([])
         useEffect(()=>{
-            fetch('/public/users.json').then(res=>res.json()).then(data=>setMembers(data))
+            fetch('/users.json').then(res=>res.json()).then(data=>setMembers(data))
         }, [])        
     return (
         <div className='mt-5 mx-5'>
