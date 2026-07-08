@@ -1,6 +1,6 @@
 import React from 'react';
 
-const publicLayout = () => {
+const PublicLayout = () => {
     return (
         <div>
             
@@ -8,4 +8,4 @@ const publicLayout = () => {
     );
 };
 
-export default publicLayout;
+export default PublicLayout;
