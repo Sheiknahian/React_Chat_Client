@@ -5,6 +5,7 @@ import Login from "../Components/Login";
 import Signup from "../Components/Signup";
 import PrivateRoute from "./PrivateRoute";
 import PublicLayout from "../Layouts/PublicLayout";
+import Inbox from "../Components/Inbox";
 
 
 
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
                 index: true,
                 path: '/',
                 element: <App></App>
+            },
+            {
+                path: '/inbox/:id',
+                element: <Inbox></Inbox>
             }
         ]
     },

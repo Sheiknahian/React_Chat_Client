@@ -21,7 +21,7 @@ const TopNav = () => {
                     <div className='flex items-center justify-center text-2xl bg-gray-200 rounded-full w-16 aspect-square border-1 text-sky-500 border-sky-500'>
                         <FaPlus></FaPlus>
                     </div>
-                    <p className='w-18'>Add Story</p>
+                    <p className='w-20 text-center'>Add Story</p>
                 </div>
             {
                 members?.map((member, index)=>

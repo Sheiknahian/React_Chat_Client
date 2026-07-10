@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { HiDotsHorizontal } from 'react-icons/hi';
+import { Link } from 'react-router';
 
 const Users = () => {
     const [members, setMembers] = useState([])
@@ -7,15 +8,15 @@ const Users = () => {
             fetch('/users.json').then(res=>res.json()).then(data=>setMembers(data))
         }, [])        
     return (
-        <div className='mt-5 mx-5'>
-            <div className='flex justify-between items-center'>
+        <div className='mt-5'>
+            <div className='flex justify-between items-center mx-5'>
                 <p className='font-semibold text-xl'>Chats</p>
                 <HiDotsHorizontal className='text-2xl'/>
             </div>
-            <div className='flex flex-col gap-5 mt-5'>
+            <div className='flex flex-col mt-2'>
             {
                 members?.map((member, index)=>
-                <div key={index} className='flex gap-5 items-center'>
+                <Link to={`/inbox/${member.id}`} key={index} className='flex px-5 py-3 gap-5 items-center active:bg-gray-200'>
                     <div className=''>
                         <img className='w-16 aspect-square rounded-full' src={member.avatar} alt="" />
                     </div>
@@ -28,7 +29,7 @@ const Users = () => {
                             <p className='text-gray-700'>{member.time}</p>
                         </div>
                     </div>
-                </div>
+                </Link>
                 )
             }
             </div>
