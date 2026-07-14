@@ -50,8 +50,8 @@ const Inbox = () => {
     }, [prevMessages])
 
     const handleMsgSubmit = async(e) => {
-        e.preventDefault()
         inputRef.current?.focus()
+        e.preventDefault()
         const message = e.target.message.value
         const msgData = {
             message: message,
