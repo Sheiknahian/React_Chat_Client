@@ -101,11 +101,11 @@ const Users = () => {
                             <div className='flex justify-between iems-center w-full'>
                                 <div>
                                     <p className='text-lg font-semibold'>{member.name}</p>
-                                    <p className={conversation?.lastMessageSeen ? 'text-gray-700' : 'text-black font-semibold'}>{conversation?.lastMessageSender === user.email && 'You: '}{conversation ? conversation.lastMessage : 'No Message Yet'}</p>
+                                    <p className={conversation?.lastMessageSender === user?.email ? 'text-gray-600' : conversation?.lastMessageSeen ? 'text-gray-600' : 'text-black font-semibold'}>{conversation?.lastMessageSender === user.email && 'You: '}{conversation ? conversation.lastMessage : 'No Message Yet'}</p>
                                 </div>
                                 <div className='flex flex-col items-center gap-2'>
-                                    <p className={conversation?.lastMessageSeen ? 'text-gray-700' : 'text-black font-semibold'}>{conversation?.lastMessageTime ? formatTime(conversation.lastMessageTime) : ''}</p>
-                                    <div className={conversation?.lastMessageSeen ? '' : 'bg-sky-600 w-2 aspect-square rounded-full'}></div>
+                                    <p className={conversation?.lastMessageSender === user?.email ? 'text-gray-600' : conversation?.lastMessageSeen ? 'text-gray-600' : 'text-black font-semibold'}>{conversation?.lastMessageTime ? formatTime(conversation.lastMessageTime) : ''}</p>
+                                    <div className={conversation?.lastMessageSender === user?.email ? '' : conversation?.lastMessageSeen ? '' : 'bg-sky-600 w-2 aspect-square rounded-full'}></div>
                                 </div>
                             </div>
                         </Link>
