@@ -16,6 +16,7 @@ const Inbox = () => {
     const {user} = use(AuthContext)
     const [messages, setMessages] = useState([])
     const [active, setActive] = useState(false)
+    const inputRef = useRef(null)
 
     const {data: friend = {}, isLoading} = useQuery({
         queryKey: ['friend'],
@@ -213,7 +214,7 @@ const Inbox = () => {
             <form onSubmit={handleMsgSubmit} className='flex items-center gap-2 w-full bottom-0 bg-white p-4 border-t-1 border-sky-600'>
                 <GoImage className='text-4xl text-sky-600'/>
                 <MdKeyboardVoice className='text-4xl text-sky-600'/>
-                <input className='py-2 px-2 bg-gray-300 rounded-full w-full' name='message' type="text" placeholder='Message...'/> 
+                <input ref={inputRef} className='py-2 px-2 bg-gray-300 rounded-full w-full' name='message' type="text" placeholder='Message...'/> 
                 <button type='submit'>
                     <TbSend2 className='text-2xl text-sky-600 transition 
                     active:bg-gray-300 rounded-full'/>
