@@ -10,11 +10,11 @@ const Login = () => {
     
     const handleGoogleLogin = () => {
         loginWithGoogle()
-            .then((result)=>console.log(result.user))
+            // .then((result)=>console.log(result.user))
     }
     const handleFacebookLogin = () => {
         loginWithFacebook()
-            .then((result)=>console.log(result.user))
+            // .then((result)=>console.log(result.user))
     }
     const handleEmailLogin = (data) => {
         loginWithEmail(data.email, data.pass)

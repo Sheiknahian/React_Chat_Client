@@ -47,7 +47,7 @@ const Users = () => {
             return res.data
         }
     })      
-    console.log(conversations);
+    // console.log(conversations);
 
     useEffect(() => {
         socket.on('activeUsers', (data) => {
@@ -60,6 +60,7 @@ const Users = () => {
             socket.off('activeUsers')
         }
     }, [refetch])
+    // console.log(import.meta.env.VITE_apiKey);
 
     
     if(isLoading){
@@ -77,17 +78,17 @@ const Users = () => {
                     const conversation = conversations.find(conv=>
                         conv.participants.includes(member.email)
                     )
-                    console.log(conversation);
+                    // console.log(conversation);
                     // console.log(member.email);
                     
                     if (!conversation) {
                         return null
                     }
-                    console.log(
-                    member.email,
-                    conversation?.lastMessageSeen,
-                    typeof conversation?.lastMessageSeen
-                    );
+                    // console.log(
+                    // member.email,
+                    // conversation?.lastMessageSeen,
+                    // typeof conversation?.lastMessageSeen
+                    // );
                     return(
                         <Link to={`/inbox/${member._id}`} key={index} className={`flex px-5 py-3 gap-5 items-center active:bg-gray-200 ${member.email === user?.email && 'hidden'}`}>
                             <div className='relative'>

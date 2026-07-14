@@ -14,7 +14,7 @@ const Signup = () => {
     }
     const handleSignUp = (data) => {
         const name = data.name
-        console.log(name);
+        // console.log(name);
         
         signUpWithEmail(data.email, data.pass)
             .then(result=>{
@@ -22,7 +22,7 @@ const Signup = () => {
                     displayName: name
                 }
                 updatedProfile(updateName)
-                console.log(result.user);
+                // console.log(result.user);
                 router.navigate('/')
             })
     }

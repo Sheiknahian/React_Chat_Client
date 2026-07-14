@@ -110,7 +110,7 @@ const Inbox = () => {
             await refetchConv()
         };
         const handleActiveUsers = async(data) => {
-            console.log(data);
+            // console.log(data);
             setActive(data.includes(friend?.email))
         }
         
