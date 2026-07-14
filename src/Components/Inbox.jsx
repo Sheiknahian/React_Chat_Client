@@ -66,6 +66,7 @@ const Inbox = () => {
         if(res.data.insertedId){
             refetch()
             e.target.reset()
+            inputRef.current?.focus()
             socket.emit('sendMessage', {
                 message,
                 receiver: friend.email
