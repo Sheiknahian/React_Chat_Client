@@ -51,7 +51,7 @@ const Inbox = () => {
 
     const handleMsgSubmit = async(e) => {
         e.preventDefault()
-    
+        inputRef.current?.focus()
         const message = e.target.message.value
         const msgData = {
             message: message,
@@ -66,7 +66,6 @@ const Inbox = () => {
         if(res.data.insertedId){
             refetch()
             e.target.reset()
-            inputRef.current?.focus()
             socket.emit('sendMessage', {
                 message,
                 receiver: friend.email
