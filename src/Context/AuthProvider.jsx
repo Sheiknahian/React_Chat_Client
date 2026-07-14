@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, FacebookAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase.config';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { socket } from '../Socket.Io/socket';
+
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const axiosSecure = useAxiosSecure()
+
     const loginWithGoogle = () => {
         const googleProvider = new GoogleAuthProvider()
         return signInWithPopup(auth, googleProvider)
@@ -22,19 +28,41 @@ const AuthProvider = ({children}) => {
     const loginWithEmail = (email, pass) => {
         return signInWithEmailAndPassword(auth, email, pass)
     }
+    const logout = () => {
+        return signOut(auth)
+    }
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser)
+            if(currentUser){
+                setUser(currentUser)
+            }
+            setLoading(false)
+            const newUser = {
+                name: currentUser.displayName,
+                email: currentUser.email,
+                photoURL: currentUser.photoURL,
+                createdAt: new Date()
+            }
+            axiosSecure.post('/users', newUser)
+            if(currentUser){
+                socket.connect()
+                socket.emit('join', currentUser.email)
+            }
         })
-        return ()=> unsubscribe()
-    }, [])
+        return ()=> {
+            unsubscribe()
+            socket.off('disconnected')        
+        }
+    }, [axiosSecure])
     const authInfo = {
         loginWithGoogle,
         loginWithFacebook,
         signUpWithEmail,
         updatedProfile,
         loginWithEmail,
-        user
+        logout,
+        user,
+        loading
     }
     return (
         <AuthContext value={authInfo}>

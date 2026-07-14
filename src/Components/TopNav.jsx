@@ -1,12 +1,30 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react';
 import { FaPlus, FaSearch } from 'react-icons/fa';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import { socket } from '../Socket.Io/socket';
+import { Link } from 'react-router';
 
 const TopNav = () => {
-    const [members, setMembers] = useState([])
-    useEffect(()=>{
-        fetch('/users.json').then(res=>res.json()).then(data=>setMembers(data))
+    const axiosSecure = useAxiosSecure()
+    const [activeUsers, setActiveUsers] = useState([]);
+    const {data: members = []} = useQuery({
+        queryKey: ['members'],
+        queryFn: async() => {
+            const res = await axiosSecure('/users')
+            return res.data
+        }
+    })
+    useEffect(() => {
+        socket.on('activeUsers', (data) => {
+            setActiveUsers(data)
+        })
+        socket.emit('getActiveUsers')
+        return () => {
+            socket.off('activeUsers')
+        }
     }, [])
-    console.log(members);
+    // console.log(activeUsers);
     
     return (
         <div>
@@ -25,12 +43,16 @@ const TopNav = () => {
                 </div>
             {
                 members?.map((member, index)=>
-                <div key={index} className='flex flex-col gap-2 items-center'>
-                    <div className='w-16 aspect-square'>
-                        <img className='rounded-full' src={member.avatar} alt="" />
+                <Link to={`/inbox/${member._id}`} key={index} className='flex flex-col gap-2 items-center'>
+                    <div className='w-16 relative aspect-square'>
+                    {
+                        activeUsers.includes(member.email) &&
+                        <div className='absolute w-3 right-0 aspect-square rounded-full bg-green-500'></div>
+                    }
+                        <img className='rounded-full' src={member.photoURL} alt="" />
                     </div>
                     <p>{member.name.split(' ')[0]}</p>
-                </div>
+                </Link>
                 )
             }
             </div>

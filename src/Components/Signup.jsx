@@ -7,9 +7,10 @@ import { router } from '../Routes/Route';
 const Signup = () => {
     const {loginWithGoogle, signUpWithEmail, updatedProfile} = use(AuthContext)
     const {handleSubmit, register, formState:{errors}} = useForm()
+
     const handleGoogleLogin = () => {
         loginWithGoogle()
-            .then((result)=>console.log(result.user))
+            .then(()=>{})
     }
     const handleSignUp = (data) => {
         const name = data.name
