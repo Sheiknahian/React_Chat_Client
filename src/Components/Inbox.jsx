@@ -171,7 +171,7 @@ const Inbox = () => {
                 </div>
             </div>
 
-            <div className='overflow-y-scroll flex-1 flex flex-col justify-end pt-3 pb-2'>
+            <div className='overflow-y-scroll flex-1 flex flex-col pt-3 pb-2'>
                 <div className='flex flex-col-reverse justify-start gap-2'>
                 {
                     messages?.map((message, index)=>{
